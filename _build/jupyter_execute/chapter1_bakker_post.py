@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <img src="../part_of_cover_bakker_post.png" width="800px">
+# <img src="part_of_cover_bakker_post.png" width="800px">
 # 
 # The Python code provided below is from <br>
 # **Analytical Groundwater Modeling: Theory and Applications Using Python** <br>
@@ -29,7 +29,7 @@ plt.rcParams["figure.autolayout"] = True # same as tight_layout after every plot
 
 # ### Flow between two rivers
 
-# <img src="figs/fig1.1.png" width="400px">
+# <img src="figs_chapter1/fig1.1.png" width="400px">
 
 # In[2]:
 
@@ -100,7 +100,7 @@ print(f'travel time from left river to right river: {L / vx:.0f} days')
 
 # ## Areal recharge between two rivers
 
-# <img src="figs/fig1.2.png" width=400>
+# <img src="figs_chapter1/fig1.2.png" width=400>
 
 # In[8]:
 
@@ -201,7 +201,7 @@ cs = plt.contour(xg, zg, psi, 20, colors='C1', linestyles='-');
 
 # ## Areal recharge between an impermeable boundary and a river
 
-# <img src="figs/fig1.3.png" width=400>
+# <img src="figs_chapter1/fig1.3.png" width=400>
 
 # In[17]:
 
@@ -241,7 +241,7 @@ plt.xlabel('$x$ (m)')
 plt.ylabel('$Q_x$ (m$^2$/d)');
 
 
-# <img src="figs/fig1.4.png" width=400>
+# <img src="figs_chapter1/fig1.4.png" width=400>
 
 # In[20]:
 
@@ -280,7 +280,7 @@ plt.ylabel('$Q_x$ (m$^2$/d)');
 
 # ## Flow through two zones of different transmissivities
 
-# <img src="figs/fig1.5.png" width=400>
+# <img src="figs_chapter1/fig1.5.png" width=400>
 
 # In[23]:
 
