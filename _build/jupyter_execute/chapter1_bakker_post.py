@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <img src="part_of_cover_bakker_post.png" width="800px">
+# <img src="./part_of_cover_bakker_post.png" width="800px">
 # 
 # The Python code provided below is from <br>
 # **Analytical Groundwater Modeling: Theory and Applications Using Python** <br>
