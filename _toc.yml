@@ -5,3 +5,4 @@ format: jb-book
 root: README
 chapters:
 - file: chapter1_bakker_post
+- file: chapter2/chapter1_bakker_post
