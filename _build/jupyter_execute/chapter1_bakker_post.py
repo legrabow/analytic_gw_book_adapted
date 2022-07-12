@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <img src="../part_of_cover_bakker_post.png" width="800px">
+# 
+# ![cover_bakker](part_of_cover_bakker_post.png)
+# 
+# 
 # 
 # The Python code provided below is from <br>
 # **Analytical Groundwater Modeling: Theory and Applications Using Python** <br>
@@ -13,6 +16,12 @@
 # This Notebook is provided under the [MIT license](https://github.com/pythongroundwaterbook/analytic_gw_book/blob/main/LICENSE). 
 # 
 # <p>© 2022 Mark Bakker and Vincent Post</p>
+
+# In[1]:
+
+
+<img src="part_of_cover_bakker_post.png" width="800px">
+
 
 # ## Steady one-dimensional flow with constant transmissivity
 
