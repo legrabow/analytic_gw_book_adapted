@@ -1,0 +1,109 @@
+Traceback (most recent call last):
+  File "/home/grabow/anaconda3/envs/jb/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/grabow/anaconda3/envs/jb/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/grabow/anaconda3/envs/jb/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/grabow/anaconda3/envs/jb/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/grabow/anaconda3/envs/jb/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/grabow/anaconda3/envs/jb/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/grabow/anaconda3/envs/jb/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/grabow/anaconda3/envs/jb/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# basic flow net (right graph)
+plt.subplot(111, aspect=1)
+cs1 = plt.contour(xg, yg, psi, np.arange(-Q / 2, Q / 2, Q / 8), colors='C0')
+cs2 = plt.contour(xg, yg, phi, np.arange(phi.min(), phi.max(), Q / 8), colors='C1')
+cs1.collections[0].set_label('equipotential')
+cs2.collections[0].set_label('streamline')
+plt.xlabel('x (m)')
+plt.ylabel('y (m)')
+plt.legend();
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mIndexError[0m                                Traceback (most recent call last)
+Input [0;32mIn [7][0m, in [0;36m<cell line: 9>[0;34m()[0m
+[1;32m      7[0m plt[38;5;241m.[39mxlabel([38;5;124m'[39m[38;5;124mx (m)[39m[38;5;124m'[39m)
+[1;32m      8[0m plt[38;5;241m.[39mylabel([38;5;124m'[39m[38;5;124my (m)[39m[38;5;124m'[39m)
+[0;32m----> 9[0m [43mplt[49m[38;5;241;43m.[39;49m[43mlegend[49m[43m([49m[43m)[49m
+
+File [0;32m~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/pyplot.py:2667[0m, in [0;36mlegend[0;34m(*args, **kwargs)[0m
+[1;32m   2665[0m [38;5;129m@_copy_docstring_and_deprecators[39m(Axes[38;5;241m.[39mlegend)
+[1;32m   2666[0m [38;5;28;01mdef[39;00m [38;5;21mlegend[39m([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m-> 2667[0m     [38;5;28;01mreturn[39;00m [43mgca[49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mlegend[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/axes/_axes.py:305[0m, in [0;36mAxes.legend[0;34m(self, *args, **kwargs)[0m
+[1;32m    303[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(extra_args):
+[1;32m    304[0m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m([38;5;124m'[39m[38;5;124mlegend only accepts two non-keyword arguments[39m[38;5;124m'[39m)
+[0;32m--> 305[0m [38;5;28mself[39m[38;5;241m.[39mlegend_ [38;5;241m=[39m [43mmlegend[49m[38;5;241;43m.[39;49m[43mLegend[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mhandles[49m[43m,[49m[43m [49m[43mlabels[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    306[0m [38;5;28mself[39m[38;5;241m.[39mlegend_[38;5;241m.[39m_remove_method [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_remove_legend
+[1;32m    307[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mlegend_
+
+File [0;32m~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend.py:499[0m, in [0;36mLegend.__init__[0;34m(self, parent, handles, labels, loc, numpoints, markerscale, markerfirst, scatterpoints, scatteryoffsets, prop, fontsize, labelcolor, borderpad, labelspacing, handlelength, handleheight, handletextpad, borderaxespad, columnspacing, ncol, mode, fancybox, shadow, title, title_fontsize, framealpha, edgecolor, facecolor, bbox_to_anchor, bbox_transform, frameon, handler_map, title_fontproperties)[0m
+[1;32m    496[0m [38;5;28mself[39m[38;5;241m.[39m_set_artist_props([38;5;28mself[39m[38;5;241m.[39mlegendPatch)
+[1;32m    498[0m [38;5;66;03m# init with null renderer[39;00m
+[0;32m--> 499[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_init_legend_box[49m[43m([49m[43mhandles[49m[43m,[49m[43m [49m[43mlabels[49m[43m,[49m[43m [49m[43mmarkerfirst[49m[43m)[49m
+[1;32m    501[0m tmp [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_loc_used_default
+[1;32m    502[0m [38;5;28mself[39m[38;5;241m.[39m_set_loc(loc)
+
+File [0;32m~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend.py:780[0m, in [0;36mLegend._init_legend_box[0;34m(self, handles, labels, markerfirst)[0m
+[1;32m    777[0m         text_list[38;5;241m.[39mappend(textbox[38;5;241m.[39m_text)
+[1;32m    778[0m         [38;5;66;03m# Create the artist for the legend which represents the[39;00m
+[1;32m    779[0m         [38;5;66;03m# original artist/handle.[39;00m
+[0;32m--> 780[0m         handle_list[38;5;241m.[39mappend([43mhandler[49m[38;5;241;43m.[39;49m[43mlegend_artist[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43morig_handle[49m[43m,[49m
+[1;32m    781[0m [43m                                                 [49m[43mfontsize[49m[43m,[49m[43m [49m[43mhandlebox[49m[43m)[49m)
+[1;32m    782[0m         handles_and_labels[38;5;241m.[39mappend((handlebox, textbox))
+[1;32m    784[0m [38;5;28;01mif[39;00m handles_and_labels:
+[1;32m    785[0m     [38;5;66;03m# We calculate number of rows in each column. The first[39;00m
+[1;32m    786[0m     [38;5;66;03m# (num_largecol) columns will have (nrows+1) rows, and remaining[39;00m
+[1;32m    787[0m     [38;5;66;03m# (num_smallcol) columns will have (nrows) rows.[39;00m
+
+File [0;32m~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend_handler.py:119[0m, in [0;36mHandlerBase.legend_artist[0;34m(self, legend, orig_handle, fontsize, handlebox)[0m
+[1;32m     95[0m [38;5;124;03m"""[39;00m
+[1;32m     96[0m [38;5;124;03mReturn the artist that this HandlerBase generates for the given[39;00m
+[1;32m     97[0m [38;5;124;03moriginal artist/handle.[39;00m
+[0;32m   (...)[0m
+[1;32m    112[0m 
+[1;32m    113[0m [38;5;124;03m"""[39;00m
+[1;32m    114[0m xdescent, ydescent, width, height [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39madjust_drawing_area(
+[1;32m    115[0m          legend, orig_handle,
+[1;32m    116[0m          handlebox[38;5;241m.[39mxdescent, handlebox[38;5;241m.[39mydescent,
+[1;32m    117[0m          handlebox[38;5;241m.[39mwidth, handlebox[38;5;241m.[39mheight,
+[1;32m    118[0m          fontsize)
+[0;32m--> 119[0m artists [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcreate_artists[49m[43m([49m[43mlegend[49m[43m,[49m[43m [49m[43morig_handle[49m[43m,[49m
+[1;32m    120[0m [43m                              [49m[43mxdescent[49m[43m,[49m[43m [49m[43mydescent[49m[43m,[49m[43m [49m[43mwidth[49m[43m,[49m[43m [49m[43mheight[49m[43m,[49m
+[1;32m    121[0m [43m                              [49m[43mfontsize[49m[43m,[49m[43m [49m[43mhandlebox[49m[38;5;241;43m.[39;49m[43mget_transform[49m[43m([49m[43m)[49m[43m)[49m
+[1;32m    123[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(artists, _Line2DHandleList):
+[1;32m    124[0m     artists [38;5;241m=[39m [artists[[38;5;241m0[39m]]
+
+File [0;32m~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend_handler.py:515[0m, in [0;36mHandlerRegularPolyCollection.create_artists[0;34m(self, legend, orig_handle, xdescent, ydescent, width, height, fontsize, trans)[0m
+[1;32m    509[0m ydata [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mget_ydata(legend, xdescent, ydescent,
+[1;32m    510[0m                        width, height, fontsize)
+[1;32m    512[0m sizes [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mget_sizes(legend, orig_handle, xdescent, ydescent,
+[1;32m    513[0m                        width, height, fontsize)
+[0;32m--> 515[0m p [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcreate_collection[49m[43m([49m[43morig_handle[49m[43m,[49m[43m [49m[43msizes[49m[43m,[49m
+[1;32m    516[0m [43m                           [49m[43moffsets[49m[38;5;241;43m=[39;49m[38;5;28;43mlist[39;49m[43m([49m[38;5;28;43mzip[39;49m[43m([49m[43mxdata_marker[49m[43m,[49m[43m [49m[43mydata[49m[43m)[49m[43m)[49m[43m,[49m
+[1;32m    517[0m [43m                           [49m[43mtransOffset[49m[38;5;241;43m=[39;49m[43mtrans[49m[43m)[49m
+[1;32m    519[0m [38;5;28mself[39m[38;5;241m.[39mupdate_prop(p, orig_handle, legend)
+[1;32m    520[0m p[38;5;241m.[39m_transOffset [38;5;241m=[39m trans
+
+File [0;32m~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend_handler.py:527[0m, in [0;36mHandlerPathCollection.create_collection[0;34m(self, orig_handle, sizes, offsets, transOffset)[0m
+[1;32m    526[0m [38;5;28;01mdef[39;00m [38;5;21mcreate_collection[39m([38;5;28mself[39m, orig_handle, sizes, offsets, transOffset):
+[0;32m--> 527[0m     p [38;5;241m=[39m [38;5;28mtype[39m(orig_handle)([[43morig_handle[49m[38;5;241;43m.[39;49m[43mget_paths[49m[43m([49m[43m)[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m],
+[1;32m    528[0m                           sizes[38;5;241m=[39msizes,
+[1;32m    529[0m                           offsets[38;5;241m=[39moffsets,
+[1;32m    530[0m                           transOffset[38;5;241m=[39mtransOffset,
+[1;32m    531[0m                           )
+[1;32m    532[0m     [38;5;28;01mreturn[39;00m p
+
+[0;31mIndexError[0m: list index out of range
+IndexError: list index out of range
+

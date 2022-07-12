@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Steady two-dimensional flow to wells &#8212; My sample book</title>
+    <title>Steady two-dimensional flow to wells &#8212; Analytical Groundwater Modeling</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -88,9 +88,14 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Analytical Groundwater Modeling</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -417,54 +422,6 @@ ISBN 9781138029392</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2305,</span> in <span class="ni">InteractiveShell.run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2303</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2304</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2305</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2306</span> <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/IPython/core/magics/pylab.py:99,</span> in <span class="ni">PylabMagics.matplotlib</span><span class="nt">(self, line)</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available matplotlib backends: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">backends_list</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">99</span>     <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">enable_matplotlib</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_show_matplotlib_backend</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/IPython/core/interactiveshell.py:3478,</span> in <span class="ni">InteractiveShell.enable_matplotlib</span><span class="nt">(self, gui)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3457</span> <span class="k">def</span> <span class="nf">enable_matplotlib</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3458</span>     <span class="sd">&quot;&quot;&quot;Enable interactive matplotlib and inline figure support.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3459</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3460</span><span class="sd">     This takes the following steps:</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3476</span><span class="sd">         display figures inline.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3477</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">3478</span>     <span class="kn">from</span> <span class="nn">matplotlib_inline.backend_inline</span> <span class="kn">import</span> <span class="n">configure_inline_support</span>
-<span class="g g-Whitespace">   </span><span class="mi">3480</span>     <span class="kn">from</span> <span class="nn">IPython.core</span> <span class="kn">import</span> <span class="n">pylabtools</span> <span class="k">as</span> <span class="n">pt</span>
-<span class="g g-Whitespace">   </span><span class="mi">3481</span>     <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">find_gui_and_backend</span><span class="p">(</span><span class="n">gui</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pylab_gui_select</span><span class="p">)</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">jb</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib_inline</span><span class="o">/</span><span class="n">backend_inline</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="sd">&quot;&quot;&quot;A matplotlib backend for publishing figures via display_data&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Copyright (c) IPython Development Team.</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Distributed under the terms of the BSD 3-Clause License.</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">matplotlib.backends.backend_agg</span> <span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">new_figure_manager</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">FigureCanvasAgg</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">new_figure_manager_given_figure</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <section id="radially-symmetric-flow-on-a-circular-island">
 <h2>Radially symmetric flow on a circular island<a class="headerlink" href="#radially-symmetric-flow-on-a-circular-island" title="Permalink to this headline">#</a></h2>
@@ -552,7 +509,86 @@ ISBN 9781138029392</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/chapter6_bakker_post_11_0.png" src="../_images/chapter6_bakker_post_11_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x (m)&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y (m)&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/pyplot.py:2667,</span> in <span class="ni">legend</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2665</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">Axes</span><span class="o">.</span><span class="n">legend</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2666</span> <span class="k">def</span> <span class="nf">legend</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2667</span>     <span class="k">return</span> <span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/axes/_axes.py:305,</span> in <span class="ni">Axes.legend</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extra_args</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;legend only accepts two non-keyword arguments&#39;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">305</span> <span class="bp">self</span><span class="o">.</span><span class="n">legend_</span> <span class="o">=</span> <span class="n">mlegend</span><span class="o">.</span><span class="n">Legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span> <span class="bp">self</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">_remove_method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_remove_legend</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">legend_</span>
+
+<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend.py:499,</span> in <span class="ni">Legend.__init__</span><span class="nt">(self, parent, handles, labels, loc, numpoints, markerscale, markerfirst, scatterpoints, scatteryoffsets, prop, fontsize, labelcolor, borderpad, labelspacing, handlelength, handleheight, handletextpad, borderaxespad, columnspacing, ncol, mode, fancybox, shadow, title, title_fontsize, framealpha, edgecolor, facecolor, bbox_to_anchor, bbox_transform, frameon, handler_map, title_fontproperties)</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_artist_props</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">legendPatch</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span> <span class="c1"># init with null renderer</span>
+<span class="ne">--&gt; </span><span class="mi">499</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_legend_box</span><span class="p">(</span><span class="n">handles</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">markerfirst</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span> <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loc_used_default</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_loc</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend.py:780,</span> in <span class="ni">Legend._init_legend_box</span><span class="nt">(self, handles, labels, markerfirst)</span>
+<span class="g g-Whitespace">    </span><span class="mi">777</span>         <span class="n">text_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">textbox</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">778</span>         <span class="c1"># Create the artist for the legend which represents the</span>
+<span class="g g-Whitespace">    </span><span class="mi">779</span>         <span class="c1"># original artist/handle.</span>
+<span class="ne">--&gt; </span><span class="mi">780</span>         <span class="n">handle_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">legend_artist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orig_handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">781</span>                                                  <span class="n">fontsize</span><span class="p">,</span> <span class="n">handlebox</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">782</span>         <span class="n">handles_and_labels</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">handlebox</span><span class="p">,</span> <span class="n">textbox</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span> <span class="k">if</span> <span class="n">handles_and_labels</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="c1"># We calculate number of rows in each column. The first</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="c1"># (num_largecol) columns will have (nrows+1) rows, and remaining</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="c1"># (num_smallcol) columns will have (nrows) rows.</span>
+
+<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend_handler.py:119,</span> in <span class="ni">HandlerBase.legend_artist</span><span class="nt">(self, legend, orig_handle, fontsize, handlebox)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span> <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span><span class="sd"> Return the artist that this HandlerBase generates for the given</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="sd"> original artist/handle.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="n">xdescent</span><span class="p">,</span> <span class="n">ydescent</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjust_drawing_area</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>          <span class="n">legend</span><span class="p">,</span> <span class="n">orig_handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>          <span class="n">handlebox</span><span class="o">.</span><span class="n">xdescent</span><span class="p">,</span> <span class="n">handlebox</span><span class="o">.</span><span class="n">ydescent</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span>          <span class="n">handlebox</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">handlebox</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span>          <span class="n">fontsize</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">119</span> <span class="n">artists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_artists</span><span class="p">(</span><span class="n">legend</span><span class="p">,</span> <span class="n">orig_handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>                               <span class="n">xdescent</span><span class="p">,</span> <span class="n">ydescent</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>                               <span class="n">fontsize</span><span class="p">,</span> <span class="n">handlebox</span><span class="o">.</span><span class="n">get_transform</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">artists</span><span class="p">,</span> <span class="n">_Line2DHandleList</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>     <span class="n">artists</span> <span class="o">=</span> <span class="p">[</span><span class="n">artists</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend_handler.py:515,</span> in <span class="ni">HandlerRegularPolyCollection.create_artists</span><span class="nt">(self, legend, orig_handle, xdescent, ydescent, width, height, fontsize, trans)</span>
+<span class="g g-Whitespace">    </span><span class="mi">509</span> <span class="n">ydata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_ydata</span><span class="p">(</span><span class="n">legend</span><span class="p">,</span> <span class="n">xdescent</span><span class="p">,</span> <span class="n">ydescent</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">510</span>                        <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">512</span> <span class="n">sizes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sizes</span><span class="p">(</span><span class="n">legend</span><span class="p">,</span> <span class="n">orig_handle</span><span class="p">,</span> <span class="n">xdescent</span><span class="p">,</span> <span class="n">ydescent</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span>                        <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">515</span> <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_collection</span><span class="p">(</span><span class="n">orig_handle</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span>                            <span class="n">offsets</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">xdata_marker</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)),</span>
+<span class="g g-Whitespace">    </span><span class="mi">517</span>                            <span class="n">transOffset</span><span class="o">=</span><span class="n">trans</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_prop</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">orig_handle</span><span class="p">,</span> <span class="n">legend</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">520</span> <span class="n">p</span><span class="o">.</span><span class="n">_transOffset</span> <span class="o">=</span> <span class="n">trans</span>
+
+<span class="nn">File ~/anaconda3/envs/jb/lib/python3.10/site-packages/matplotlib/legend_handler.py:527,</span> in <span class="ni">HandlerPathCollection.create_collection</span><span class="nt">(self, orig_handle, sizes, offsets, transOffset)</span>
+<span class="g g-Whitespace">    </span><span class="mi">526</span> <span class="k">def</span> <span class="nf">create_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orig_handle</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">transOffset</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">527</span>     <span class="n">p</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">orig_handle</span><span class="p">)([</span><span class="n">orig_handle</span><span class="o">.</span><span class="n">get_paths</span><span class="p">()[</span><span class="mi">0</span><span class="p">]],</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span>                           <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">529</span>                           <span class="n">offsets</span><span class="o">=</span><span class="n">offsets</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">530</span>                           <span class="n">transOffset</span><span class="o">=</span><span class="n">transOffset</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span>                           <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">532</span>     <span class="k">return</span> <span class="n">p</span>
+
+<span class="ne">IndexError</span>: list index out of range
+</pre></div>
+</div>
+<img alt="../_images/chapter6_bakker_post_11_1.png" src="../_images/chapter6_bakker_post_11_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -921,7 +957,7 @@ ISBN 9781138029392</p>
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By The Jupyter Book Community<br/>
+    By Mark Bakker and Vincent Post<br/>
   
       &copy; Copyright 2022.<br/>
 </p>
