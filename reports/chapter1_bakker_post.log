@@ -17,13 +17,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-<img src="part_of_cover_bakker_post.png" width="800px">
+# solution
+xg, zg = np.meshgrid(np.linspace(0, L, 2), np.linspace(zb, zb + H, 2))
+qx = -k * (hL - h0) / L * np.ones_like(xg)
+qz = np.zeros_like(xg)
 ------------------
 
-[0;36m  Input [0;32mIn [1][0;36m[0m
-[0;31m    <img src="part_of_cover_bakker_post.png" width="800px">[0m
-[0m    ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [3][0m, in [0;36m<cell line: 3>[0;34m()[0m
+[1;32m      1[0m [38;5;66;03m# solution[39;00m
+[1;32m      2[0m xg, zg [38;5;241m=[39m np[38;5;241m.[39mmeshgrid(np[38;5;241m.[39mlinspace([38;5;241m0[39m, L, [38;5;241m2[39m), np[38;5;241m.[39mlinspace(zb, zb [38;5;241m+[39m H, [38;5;241m2[39m))
+[0;32m----> 3[0m qx [38;5;241m=[39m [38;5;241m-[39m[43mk[49m [38;5;241m*[39m (hL [38;5;241m-[39m h0) [38;5;241m/[39m L [38;5;241m*[39m np[38;5;241m.[39mones_like(xg)
+[1;32m      4[0m qz [38;5;241m=[39m np[38;5;241m.[39mzeros_like(xg)
 
-SyntaxError: invalid syntax (3185070016.py, line 1)
+[0;31mNameError[0m: name 'k' is not defined
+NameError: name 'k' is not defined
 

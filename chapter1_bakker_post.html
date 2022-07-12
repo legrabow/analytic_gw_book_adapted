@@ -421,6 +421,7 @@ ISBN 9781138029392</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># set default figure size</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;contour.negative_linestyle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span> <span class="c1"># set default line style</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.autolayout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># same as tight_layout after every plot</span>
@@ -437,43 +438,52 @@ ISBN 9781138029392</p>
 <span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># aquifer length, m</span>
 <span class="n">H</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># aquifer thickness, m</span>
 <span class="n">zb</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span> <span class="c1"># aquifer bottom, m</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># hydraulic conductivity, m/d</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="c1"># porosity, -</span>
-<span class="n">T</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">H</span> <span class="c1"># transmissivity, m^2/d</span>
 <span class="n">h0</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># specified head at the left boundary, m</span>
 <span class="n">hL</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># specified head at the right boundary, m</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide_input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide_input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;head (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Qx</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Q_x$ (m$^2$/d)&#39;</span><span class="p">);</span>
+
+<span class="c1"># basic plot</span>
+<span class="k">def</span> <span class="nf">plot_subplots</span><span class="p">(</span><span class="n">h0</span><span class="p">,</span> <span class="n">hL</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot the hydraulic head in one subplot and q in the other</span>
+<span class="sd">    </span>
+<span class="sd">    Keyword Arguments</span>
+<span class="sd">    h0 -- hydraulic head to the left, m</span>
+<span class="sd">    hL -- hydraulic head to the right, m</span>
+<span class="sd">    k -- hydraulic conductivity, m/d</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">H</span> <span class="c1"># transmissivity, m^2/d</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
+    <span class="n">Qx</span> <span class="o">=</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;head (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Qx</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Q_x$ (m$^2$/d)&#39;</span><span class="p">);</span>
+
+
+
+<span class="n">interact</span><span class="p">(</span><span class="n">plot_subplots</span><span class="p">,</span>
+         <span class="n">h0</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$h_0, m$:&#39;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+         <span class="n">hL</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$h_L, m$:&#39;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+         <span class="n">k</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$K, \frac</span><span class="si">{m}{d}</span><span class="s1">$:&#39;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_7_0.png" src="_images/chapter1_bakker_post_7_0.png" />
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "6d1b1eeefa304a41889e6d787b1b7877"}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_subplots(h0, hL, k)&gt;
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -482,6 +492,19 @@ ISBN 9781138029392</p>
 <span class="n">xg</span><span class="p">,</span> <span class="n">zg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">zb</span><span class="p">,</span> <span class="n">zb</span> <span class="o">+</span> <span class="n">H</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">qx</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">xg</span><span class="p">)</span>
 <span class="n">qz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">xg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># solution</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">xg</span><span class="p">,</span> <span class="n">zg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">zb</span><span class="p">,</span> <span class="n">zb</span> <span class="o">+</span> <span class="n">H</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">qx</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">xg</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">qz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">xg</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;k&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -497,7 +520,7 @@ ISBN 9781138029392</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_9_0.png" src="_images/chapter1_bakker_post_9_0.png" />
+<img alt="_images/chapter1_bakker_post_7_0.png" src="_images/chapter1_bakker_post_7_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -564,7 +587,7 @@ travel time from left river to right river: 15000 days
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_15_0.png" src="_images/chapter1_bakker_post_15_0.png" />
+<img alt="_images/chapter1_bakker_post_13_0.png" src="_images/chapter1_bakker_post_13_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -602,7 +625,7 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_18_0.png" src="_images/chapter1_bakker_post_18_0.png" />
+<img alt="_images/chapter1_bakker_post_16_0.png" src="_images/chapter1_bakker_post_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -630,7 +653,7 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_20_0.png" src="_images/chapter1_bakker_post_20_0.png" />
+<img alt="_images/chapter1_bakker_post_18_0.png" src="_images/chapter1_bakker_post_18_0.png" />
 </div>
 </div>
 <div class="cell tag_hide_output docutils container">
@@ -642,7 +665,7 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_21_0.png" src="_images/chapter1_bakker_post_21_0.png" />
+<img alt="_images/chapter1_bakker_post_19_0.png" src="_images/chapter1_bakker_post_19_0.png" />
 </div>
 </div>
 </section>
@@ -690,7 +713,7 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_26_0.png" src="_images/chapter1_bakker_post_26_0.png" />
+<img alt="_images/chapter1_bakker_post_24_0.png" src="_images/chapter1_bakker_post_24_0.png" />
 </div>
 </div>
 <p><img alt="fig1.4" src="_images/fig1.4.png" /></p>
@@ -732,7 +755,7 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_30_0.png" src="_images/chapter1_bakker_post_30_0.png" />
+<img alt="_images/chapter1_bakker_post_28_0.png" src="_images/chapter1_bakker_post_28_0.png" />
 </div>
 </div>
 </section>
@@ -793,7 +816,7 @@ head gradient zone 1: -0.003636
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_35_0.png" src="_images/chapter1_bakker_post_35_0.png" />
+<img alt="_images/chapter1_bakker_post_33_0.png" src="_images/chapter1_bakker_post_33_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
