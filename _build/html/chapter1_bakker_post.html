@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Steady one-dimensional flow with constant transmissivity &#8212; My sample book</title>
+    <title>Steady one-dimensional flow with constant transmissivity &#8212; Analytical Groundwater Modeling</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -89,9 +89,14 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <img src="_static/part_of_cover_bakker_post.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Analytical Groundwater Modeling</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -186,6 +191,24 @@ title="Launch on Binder"
   </span>
 <span class="headerbtn__text-container">Binder</span>
 </a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
 
       </li>
       
@@ -409,28 +432,14 @@ by <em>Mark Bakker and Vincent Post</em> <br>
 ISBN 9781138029392</p>
 <p>The book is published by CRC press and is available <a class="reference external" href="https://www.routledge.com/Analytical-Groundwater-Modeling-Theory-and-Applications-using-Python/Bakker-Post/p/book/9781138029392">here</a>.</p>
 <p>This Notebook is provided under the <a class="reference external" href="https://github.com/pythongroundwaterbook/analytic_gw_book/blob/main/LICENSE">MIT license</a>.</p>
-<p>© 2022 Mark Bakker and Vincent Post</p><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;part_of_cover_bakker_post.png&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;800px&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;part_of_cover_bakker_post.png&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;800px&quot;</span><span class="o">&gt;</span>
-    <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<section id="steady-one-dimensional-flow-with-constant-transmissivity">
+<p>© 2022 Mark Bakker and Vincent Post</p><section id="steady-one-dimensional-flow-with-constant-transmissivity">
 <h1>Steady one-dimensional flow with constant transmissivity<a class="headerlink" href="#steady-one-dimensional-flow-with-constant-transmissivity" title="Permalink to this headline">#</a></h1>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># set default figure size</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;contour.negative_linestyle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span> <span class="c1"># set default line style</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.autolayout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># same as tight_layout after every plot</span>
@@ -440,49 +449,61 @@ ISBN 9781138029392</p>
 </div>
 <section id="flow-between-two-rivers">
 <h2>Flow between two rivers<a class="headerlink" href="#flow-between-two-rivers" title="Permalink to this headline">#</a></h2>
-<img src="figs_chapter1/fig1.1.png" width="400px"><div class="cell docutils container">
+<p><img alt="fig1.1" src="_images/fig1.1.png" /></p>
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
 <span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># aquifer length, m</span>
 <span class="n">H</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># aquifer thickness, m</span>
 <span class="n">zb</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span> <span class="c1"># aquifer bottom, m</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># hydraulic conductivity, m/d</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="c1"># porosity, -</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># hydraulic conductivity, m/d</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">H</span> <span class="c1"># transmissivity, m^2/d</span>
 <span class="n">h0</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># specified head at the left boundary, m</span>
 <span class="n">hL</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># specified head at the right boundary, m</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide_output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;head (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Qx</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Q_x$ (m$^2$/d)&#39;</span><span class="p">);</span>
+
+<span class="c1"># basic plot</span>
+<span class="k">def</span> <span class="nf">plot_subplots</span><span class="p">(</span><span class="n">h0</span><span class="p">,</span> <span class="n">hL</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot the hydraulic head in one subplot and q in the other</span>
+<span class="sd">    </span>
+<span class="sd">    Keyword Arguments</span>
+<span class="sd">    h0 -- hydraulic head to the left, m</span>
+<span class="sd">    hL -- hydraulic head to the right, m</span>
+<span class="sd">    k -- hydraulic conductivity, m/d</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">H</span> <span class="c1"># transmissivity, m^2/d</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
+    <span class="n">Qx</span> <span class="o">=</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;head (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Qx</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Q_x$ (m$^2$/d)&#39;</span><span class="p">);</span>
+
+
+
+<span class="n">interact</span><span class="p">(</span><span class="n">plot_subplots</span><span class="p">,</span>
+         <span class="n">h0</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$h_0, m$:&#39;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+         <span class="n">hL</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$h_L, m$:&#39;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+         <span class="n">k</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$K, \frac</span><span class="si">{m}{d}</span><span class="s1">$:&#39;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_8_0.png" src="_images/chapter1_bakker_post_8_0.png" />
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "6397a0cf4b4d4563a0f5cf8c57ae6002"}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_subplots(h0, hL, k)&gt;
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -506,7 +527,7 @@ ISBN 9781138029392</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_10_0.png" src="_images/chapter1_bakker_post_10_0.png" />
+<img alt="_images/chapter1_bakker_post_7_0.png" src="_images/chapter1_bakker_post_7_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -529,7 +550,8 @@ travel time from left river to right river: 15000 days
 </section>
 <section id="areal-recharge-between-two-rivers">
 <h1>Areal recharge between two rivers<a class="headerlink" href="#areal-recharge-between-two-rivers" title="Permalink to this headline">#</a></h1>
-<img src="figs_chapter1/fig1.2.png" width=400><div class="cell docutils container">
+<p><img alt="fig1.2" src="_images/fig1.2.png" /></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
 <span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># aquifer length, m</span>
@@ -572,7 +594,7 @@ travel time from left river to right river: 15000 days
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_16_0.png" src="_images/chapter1_bakker_post_16_0.png" />
+<img alt="_images/chapter1_bakker_post_13_0.png" src="_images/chapter1_bakker_post_13_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -610,7 +632,7 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_19_0.png" src="_images/chapter1_bakker_post_19_0.png" />
+<img alt="_images/chapter1_bakker_post_16_0.png" src="_images/chapter1_bakker_post_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -638,7 +660,7 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_21_0.png" src="_images/chapter1_bakker_post_21_0.png" />
+<img alt="_images/chapter1_bakker_post_18_0.png" src="_images/chapter1_bakker_post_18_0.png" />
 </div>
 </div>
 <div class="cell tag_hide_output docutils container">
@@ -650,13 +672,14 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_22_0.png" src="_images/chapter1_bakker_post_22_0.png" />
+<img alt="_images/chapter1_bakker_post_19_0.png" src="_images/chapter1_bakker_post_19_0.png" />
 </div>
 </div>
 </section>
 <section id="areal-recharge-between-an-impermeable-boundary-and-a-river">
 <h1>Areal recharge between an impermeable boundary and a river<a class="headerlink" href="#areal-recharge-between-an-impermeable-boundary-and-a-river" title="Permalink to this headline">#</a></h1>
-<img src="figs_chapter1/fig1.3.png" width=400><div class="cell docutils container">
+<p><img alt="fig1.3" src="_images/fig1.3.png" /></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
 <span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># aquifer length, m</span>
@@ -697,10 +720,11 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_27_0.png" src="_images/chapter1_bakker_post_27_0.png" />
+<img alt="_images/chapter1_bakker_post_24_0.png" src="_images/chapter1_bakker_post_24_0.png" />
 </div>
 </div>
-<img src="figs_chapter1/fig1.4.png" width=400><div class="cell docutils container">
+<p><img alt="fig1.4" src="_images/fig1.4.png" /></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># additional parameters</span>
 <span class="n">hR</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># water level in river, m</span>
@@ -738,13 +762,14 @@ discharge into right river: 0.700 m^2/d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_31_0.png" src="_images/chapter1_bakker_post_31_0.png" />
+<img alt="_images/chapter1_bakker_post_28_0.png" src="_images/chapter1_bakker_post_28_0.png" />
 </div>
 </div>
 </section>
 <section id="flow-through-two-zones-of-different-transmissivities">
 <h1>Flow through two zones of different transmissivities<a class="headerlink" href="#flow-through-two-zones-of-different-transmissivities" title="Permalink to this headline">#</a></h1>
-<img src="figs_chapter1/fig1.5.png" width=400><div class="cell docutils container">
+<p><img alt="fig1.5" src="_images/fig1.5.png" /></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
 <span class="n">h0</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># specified head at the left boundary, m</span>
@@ -798,7 +823,7 @@ head gradient zone 1: -0.003636
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/chapter1_bakker_post_36_0.png" src="_images/chapter1_bakker_post_36_0.png" />
+<img alt="_images/chapter1_bakker_post_33_0.png" src="_images/chapter1_bakker_post_33_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -817,11 +842,17 @@ effective transmissivity:  36.4 m^2/d
 </div>
 </section>
 
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"36368a9b14154a118e3f4a284904efec": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "922d4d4ba2b34f36a2cbc48899dd699a": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "0aeeb94a07684958bf5e6e6f93aed0a0": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": true, "description": "$h_0, m$:", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_36368a9b14154a118e3f4a284904efec", "max": 8.0, "min": 4.0, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.1, "style": "IPY_MODEL_922d4d4ba2b34f36a2cbc48899dd699a", "value": 6.0}}, "d46b8e37546146a19e99a6c8a83b861c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ba277baa5baa4ffeb8755ab7fb2a9cd8": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "f91b327998e74b6d8c438891405af1c2": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": true, "description": "$h_L, m$:", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_d46b8e37546146a19e99a6c8a83b861c", "max": 8.0, "min": 4.0, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.1, "style": "IPY_MODEL_ba277baa5baa4ffeb8755ab7fb2a9cd8", "value": 4.0}}, "a43bee572b804ea98a074a9f7a20bf1c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "83af66234c95492ab58721cdbb5e1225": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b0c1ca96a3244a0a874384c90df2342d": {"model_name": "FloatTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatTextView", "continuous_update": false, "description": "$K, \\frac{m}{d}$:", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_a43bee572b804ea98a074a9f7a20bf1c", "step": 0.1, "style": "IPY_MODEL_83af66234c95492ab58721cdbb5e1225", "value": 10.0}}, "9ac07603f20742ecaabb1f07680c27c7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6397a0cf4b4d4563a0f5cf8c57ae6002": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_0aeeb94a07684958bf5e6e6f93aed0a0", "IPY_MODEL_f91b327998e74b6d8c438891405af1c2", "IPY_MODEL_b0c1ca96a3244a0a874384c90df2342d", "IPY_MODEL_27904947dfb94d90bac9584c60d352de"], "layout": "IPY_MODEL_9ac07603f20742ecaabb1f07680c27c7"}}, "43d490543b114daf9401031c40a8a72a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "27904947dfb94d90bac9584c60d352de": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_43d490543b114daf9401031c40a8a72a", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {"needs_background": "light"}, "data": {"text/plain": "<Figure size 576x216 with 2 Axes>", "image/png": "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\n"}}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "legrabow/analytic_gw_book_adapted",
             ref: "master",
         },
         codeMirrorConfig: {
@@ -858,7 +889,7 @@ effective transmissivity:  36.4 m^2/d
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By The Jupyter Book Community<br/>
+    By Mark Bakker and Vincent Post<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

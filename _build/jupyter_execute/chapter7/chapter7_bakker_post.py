@@ -101,7 +101,7 @@ path1 = solve_ivp(vxvy, (0, tmax), y0=[-200, 80], t_eval=t, events=reached_well)
 print('path1 message:', path1.message)
 
 
-# In[8]:
+# In[ ]:
 
 
 # basic plot
@@ -115,7 +115,7 @@ plt.legend();
 
 # ## Well capture zones
 
-# In[9]:
+# In[ ]:
 
 
 # parameters
@@ -128,7 +128,7 @@ Q = 500 # discharge of the well, m^3/d
 rw = 0.3 # radius of well, m
 
 
-# In[10]:
+# In[ ]:
 
 
 # solution
@@ -148,7 +148,7 @@ tgrid = -n * H * xg / U - Q * n * H / (2 * np.pi * U ** 2) * np.log(
         np.sin(theta - 2 * np.pi * U * yg / Q) / np.sin(theta))
 
 
-# In[11]:
+# In[ ]:
 
 
 # basic capture zone plot
@@ -159,7 +159,7 @@ plt.xlabel('x (m)')
 plt.ylabel('y (m)');
 
 
-# In[12]:
+# In[ ]:
 
 
 # additional parameters
@@ -167,7 +167,7 @@ xw0, yw0 = 0, 0 # x,y-location well 0, m
 xw1, yw1 = 100, 100 # x,y-location well 1, m
 
 
-# In[13]:
+# In[ ]:
 
 
 def vxvy(t, xy, xw=0, yw=0):
@@ -178,7 +178,7 @@ def vxvy(t, xy, xw=0, yw=0):
     return np.array([Qx, Qy]) / (n * H)
 
 
-# In[14]:
+# In[ ]:
 
 
 # solution and plot
@@ -202,7 +202,7 @@ plt.ylabel('y (m)');
 
 # ## A well in uniform background flow near a river
 
-# In[15]:
+# In[ ]:
 
 
 # parameters
@@ -211,7 +211,7 @@ Wu = 0.5 - 0j # complex uniform flow, m^2/d
 zetaw = 0 + 0j # complex location of well, m
 
 
-# In[16]:
+# In[ ]:
 
 
 # solution
@@ -221,7 +221,7 @@ omega1 = -Wu * zetag + Q / (2 * np.pi) * np.log(zetag - zetaw)
 omega2 = -Wu * zetag + Q / (2 * np.pi) * np.log(zetaw - zetag)
 
 
-# In[17]:
+# In[ ]:
 
 
 # basic plot of flow net
@@ -238,7 +238,7 @@ plt.contour(xg, yg, omega2.imag, [-40, 40], colors='k')
 plt.xlabel('x (m)');
 
 
-# In[18]:
+# In[ ]:
 
 
 # parameters
@@ -253,7 +253,7 @@ Qcr = np.pi * UL * d # critical discharge, m^3/d
 print(f'{Qcr = :.2f} m^3/d')
 
 
-# In[19]:
+# In[ ]:
 
 
 # solution
@@ -278,7 +278,7 @@ delQ = omega(0, ys, 2 *  Qcr).imag - omega(0, -ys, 2 * Qcr).imag
 print(f'fraction of water from river for Q = 2Q_cr: {delQ / (2 * Qcr):.2f}')
 
 
-# In[20]:
+# In[ ]:
 
 
 # basic flow nets
@@ -297,7 +297,7 @@ plt.xlabel('x (m)');
 
 # <img src="figs/fig7.1.png" width=400>
 
-# In[21]:
+# In[ ]:
 
 
 # parameters
@@ -316,7 +316,7 @@ C = B / c # conductance of streambed, m/d
 print(f'leakage factor below stream: {np.sqrt(T * c):.0f} m')
 
 
-# In[22]:
+# In[ ]:
 
 
 # solution
@@ -337,7 +337,7 @@ def omegaresriv(x, y, Q):
 omegaresrivvec = np.vectorize(omegaresriv)
 
 
-# In[23]:
+# In[ ]:
 
 
 # find critical discharge
@@ -360,7 +360,7 @@ print(f'Qcr without bed resistance = {Qcr1:.2f} m^3/d')
 print(f'Qcr with bed resistance = {Qcr2:.2f} m^3/d')
 
 
-# In[24]:
+# In[ ]:
 
 
 xg, yg = np.meshgrid(np.linspace(-200, 50, 100), np.linspace(-100, 100, 100))
@@ -368,7 +368,7 @@ om1 = omegavec(xg, yg, Q=Qcr1) # omegavec from previous section
 om2 = omegaresrivvec(xg, yg, Q=Qcr2)
 
 
-# In[25]:
+# In[ ]:
 
 
 # solution W (hidden)
@@ -387,7 +387,7 @@ def Wdis2(x, y, Q):
 Wdis2vec = np.vectorize(Wdis2)
 
 
-# In[26]:
+# In[ ]:
 
 
 # basic flow nets
@@ -404,7 +404,7 @@ plt.axvline(0, color='lightblue', lw=3)
 plt.xlabel('x (m)');
 
 
-# In[27]:
+# In[ ]:
 
 
 # changed parameters
@@ -418,14 +418,14 @@ ys = brentq(func2, 0, 2 * d, args=(Q))
 print(f'point on the river where Qx equals zero: {ys:.2f} m')
 
 
-# In[28]:
+# In[ ]:
 
 
 print(f'head at origin: {omegaresriv(0, 0, Q).real / T:.2f} m')
 print(f'head at well: {omegaresriv(-d + rw, 0, Q).real / T:.2f} m')
 
 
-# In[29]:
+# In[ ]:
 
 
 # basic flow nets
@@ -441,7 +441,7 @@ plt.ylabel('y (m)');
 
 # ## A well in uniform background flow near the coast
 
-# In[30]:
+# In[ ]:
 
 
 # parameters
@@ -457,7 +457,7 @@ Q = Qcr / 2 # discharge of well, m^3/d
 print(f'dischage of well: {Q:.2f} m^3/d')
 
 
-# In[31]:
+# In[ ]:
 
 
 # solution
@@ -474,7 +474,7 @@ xg, yg = np.meshgrid(np.linspace(-1200, 0, 120), np.linspace(-500, 500, 101))
 om = omega(xg, yg, Q)
 
 
-# In[32]:
+# In[ ]:
 
 
 # basic flow net and potential along y=0
@@ -494,7 +494,7 @@ plt.ylabel(r'$\Phi$ (m$^3$/d)')
 plt.grid();
 
 
-# In[33]:
+# In[ ]:
 
 
 def func(Q):
@@ -508,14 +508,14 @@ print(f'Qmax as fraction of Qcr of Section 7.3: {Qmax / Qcr:.2f}')
 om1 = omega(xg, yg, Qmax)
 
 
-# In[34]:
+# In[ ]:
 
 
 xg, yg = np.meshgrid(np.linspace(-1200, 0, 120), np.linspace(-500, 500, 101))
 om = omega(xg, yg, Qmax)
 
 
-# In[35]:
+# In[ ]:
 
 
 # basic flow net and potential along y=0

@@ -17,12 +17,6 @@
 # 
 # <p>© 2022 Mark Bakker and Vincent Post</p>
 
-# In[1]:
-
-
-<img src="part_of_cover_bakker_post.png" width="800px">
-
-
 # ## Steady one-dimensional flow with constant transmissivity
 
 # In[1]:
@@ -31,6 +25,7 @@
 get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
 import matplotlib.pyplot as plt
+from ipywidgets import *
 plt.rcParams["figure.figsize"] = (8, 3) # set default figure size
 plt.rcParams["contour.negative_linestyle"] = 'solid' # set default line style
 plt.rcParams["figure.autolayout"] = True # same as tight_layout after every plot
@@ -38,7 +33,8 @@ plt.rcParams["figure.autolayout"] = True # same as tight_layout after every plot
 
 # ### Flow between two rivers
 
-# <img src="figs_chapter1/fig1.1.png" width="400px">
+# ![fig1.1](figs_chapter1/fig1.1.png)
+# 
 
 # In[2]:
 
@@ -47,39 +43,48 @@ plt.rcParams["figure.autolayout"] = True # same as tight_layout after every plot
 L = 1000 # aquifer length, m
 H = 10 # aquifer thickness, m
 zb = -6 # aquifer bottom, m
-k = 10 # hydraulic conductivity, m/d
 n = 0.3 # porosity, -
+k = 10 # hydraulic conductivity, m/d
 T = k * H # transmissivity, m^2/d
 h0 = 6 # specified head at the left boundary, m
 hL = 4 # specified head at the right boundary, m
 
+# basic plot
+def plot_subplots(h0, hL, k):
+    """
+    Plot the hydraulic head in one subplot and q in the other
+    
+    Keyword Arguments
+    h0 -- hydraulic head to the left, m
+    hL -- hydraulic head to the right, m
+    k -- hydraulic conductivity, m/d
+    """
+    T = k * H # transmissivity, m^2/d
+    
+    x = np.linspace(0, L, 100)
+    h = (hL - h0) * x / L + h0
+    Qx = - T * (hL - h0) / L * np.ones_like(x)
+    
+    plt.subplot(121)
+    plt.plot(x, h)
+    plt.grid()
+    plt.xlabel('$x$ (m)')
+    plt.ylabel('head (m)')
+    plt.subplot(122)
+    plt.plot(x, Qx)
+    plt.grid()
+    plt.xlabel('$x$ (m)')
+    plt.ylabel('$Q_x$ (m$^2$/d)');
+
+
+
+interact(plot_subplots,
+         h0 = widgets.FloatSlider(value=6, min=4, max=8, step=0.1, description=r'$h_0, m$:', disabled=False),
+         hL=widgets.FloatSlider(value=4, min=4, max=8, step=0.1, description=r'$h_L, m$:', disabled=False),
+         k=widgets.FloatText(value=10, min=0.1, max=100, step=0.1, description=r'$K, \frac{m}{d}$:', disabled=False))
+
 
 # In[3]:
-
-
-# solution
-x = np.linspace(0, L, 100)
-h = (hL - h0) * x / L + h0
-Qx = - T * (hL - h0) / L * np.ones_like(x)
-
-
-# In[4]:
-
-
-# basic plot
-plt.subplot(121)
-plt.plot(x, h)
-plt.grid()
-plt.xlabel('$x$ (m)')
-plt.ylabel('head (m)')
-plt.subplot(122)
-plt.plot(x, Qx)
-plt.grid()
-plt.xlabel('$x$ (m)')
-plt.ylabel('$Q_x$ (m$^2$/d)');
-
-
-# In[5]:
 
 
 # solution
@@ -88,7 +93,7 @@ qx = -k * (hL - h0) / L * np.ones_like(xg)
 qz = np.zeros_like(xg)
 
 
-# In[6]:
+# In[4]:
 
 
 # basic stream plot
@@ -98,7 +103,7 @@ plt.xlabel('$x$ (m)')
 plt.ylabel('$z$ (m)');
 
 
-# In[7]:
+# In[5]:
 
 
 # travel time
@@ -109,9 +114,9 @@ print(f'travel time from left river to right river: {L / vx:.0f} days')
 
 # ## Areal recharge between two rivers
 
-# <img src="figs_chapter1/fig1.2.png" width=400>
+# ![fig1.2](figs_chapter1/fig1.2.png)
 
-# In[8]:
+# In[6]:
 
 
 # parameters
@@ -126,7 +131,7 @@ hL = 4 # specified head at the right boundary, m
 N = 0.001  # areal recharge, m/d
 
 
-# In[9]:
+# In[7]:
 
 
 # solution
@@ -135,7 +140,7 @@ h = -N / (2 * T) * (x ** 2 - L * x) + (hL - h0) * x / L + h0
 Qx = N * (x - L / 2) - T * (hL - h0) / L 
 
 
-# In[10]:
+# In[8]:
 
 
 # basic plot
@@ -151,14 +156,14 @@ plt.xlabel('$x$ (m)')
 plt.ylabel('$Q_x$ (m$^2$/d)');
 
 
-# In[11]:
+# In[9]:
 
 
 print(f'discharge into left river: {-Qx[0]:.3f} m^2/d')
 print(f'discharge into right river: {Qx[-1]:.3f} m^2/d')
 
 
-# In[12]:
+# In[10]:
 
 
 # solution
@@ -167,7 +172,7 @@ qx = (N * (xg - L / 2) - T * (hL - h0) / L) / H
 qz = - N * (zg - zb) / H
 
 
-# In[13]:
+# In[11]:
 
 
 # basic stream plot
@@ -177,7 +182,7 @@ plt.xlabel('$x$ (m)')
 plt.ylabel('$z$ (m)');
 
 
-# In[14]:
+# In[12]:
 
 
 # solution
@@ -189,7 +194,7 @@ xg = x
 zg = [zb, zb + H]
 
 
-# In[15]:
+# In[13]:
 
 
 # basic streamline plot
@@ -200,7 +205,7 @@ plt.xlabel('$x$ (m)')
 plt.ylabel('$z$ (m)');
 
 
-# In[16]:
+# In[14]:
 
 
 # basic streamline plot of part of flow field without vertical exaggeration
@@ -210,9 +215,9 @@ cs = plt.contour(xg, zg, psi, 20, colors='C1', linestyles='-');
 
 # ## Areal recharge between an impermeable boundary and a river
 
-# <img src="figs_chapter1/fig1.3.png" width=400>
+# ![fig1.3](figs_chapter1/fig1.3.png)
 
-# In[17]:
+# In[15]:
 
 
 # parameters
@@ -225,7 +230,7 @@ hL = 4 # specified head at the right boundary, m
 N = 0.001  # areal recharge, m/d
 
 
-# In[18]:
+# In[16]:
 
 
 # solution
@@ -234,7 +239,7 @@ h = -N / (2 * T) * (x ** 2 - L ** 2) + hL
 Qx = N * x
 
 
-# In[19]:
+# In[17]:
 
 
 # basic plot
@@ -250,9 +255,9 @@ plt.xlabel('$x$ (m)')
 plt.ylabel('$Q_x$ (m$^2$/d)');
 
 
-# <img src="figs_chapter1/fig1.4.png" width=400>
+# ![fig1.4](figs_chapter1/fig1.4.png)
 
-# In[20]:
+# In[18]:
 
 
 # additional parameters
@@ -260,7 +265,7 @@ hR = 4 # water level in river, m
 c = 10 # hydraulic resistance of river bed, d
 
 
-# In[21]:
+# In[19]:
 
 
 # solution
@@ -271,7 +276,7 @@ h = -N / (2 * T) * (x ** 2 - L ** 2) + hL
 Qx = N * x
 
 
-# In[22]:
+# In[20]:
 
 
 # basic plot
@@ -289,9 +294,9 @@ plt.ylabel('$Q_x$ (m$^2$/d)');
 
 # ## Flow through two zones of different transmissivities
 
-# <img src="figs_chapter1/fig1.5.png" width=400>
+# ![fig1.5](figs_chapter1/fig1.5.png)
 
-# In[23]:
+# In[21]:
 
 
 # parameters
@@ -304,7 +309,7 @@ T1 = 20 # transmissivity of zone 1, m^2/d
 L = L0 + L1 # total length, m
 
 
-# In[24]:
+# In[22]:
 
 
 # solution
@@ -319,7 +324,7 @@ print(f'head gradient zone 0: {(hhalfway - h0) / L0: .6f}')
 print(f'head gradient zone 1: {(hL - hhalfway) / L1: .6f}')
 
 
-# In[25]:
+# In[23]:
 
 
 # basic plot
@@ -335,7 +340,7 @@ plt.xlabel('$x$ (m)')
 plt.ylabel('$Q_x$ (m$^2$/d)');
 
 
-# In[26]:
+# In[24]:
 
 
 print(f'arithmetic mean transmissivity: {(T0 + T1) / 2: .1f} m^2/d')

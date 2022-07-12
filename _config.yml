@@ -1,9 +1,9 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: My sample book
-author: The Jupyter Book Community
-# logo: logo.png
+title: Analytical Groundwater Modeling
+author: Mark Bakker and Vincent Post
+logo: part_of_cover_bakker_post.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -14,6 +14,10 @@ execute:
 latex:
   latex_documents:
     targetname: book.tex
+
+launch_buttons:
+  thebe                  : true
+
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
