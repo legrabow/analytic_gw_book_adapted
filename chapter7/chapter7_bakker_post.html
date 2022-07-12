@@ -531,9 +531,6 @@ ISBN 9781138029392</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/chapter7_bakker_post_10_0.png" src="../_images/chapter7_bakker_post_10_0.png" />
-</div>
 </div>
 </section>
 <section id="well-capture-zones">
@@ -584,9 +581,6 @@ ISBN 9781138029392</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/chapter7_bakker_post_14_0.png" src="../_images/chapter7_bakker_post_14_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -631,9 +625,6 @@ ISBN 9781138029392</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/chapter7_bakker_post_17_0.png" src="../_images/chapter7_bakker_post_17_0.png" />
-</div>
 </div>
 </section>
 <section id="a-well-in-uniform-background-flow-near-a-river">
@@ -676,9 +667,6 @@ ISBN 9781138029392</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/chapter7_bakker_post_21_0.png" src="../_images/chapter7_bakker_post_21_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -692,11 +680,6 @@ ISBN 9781138029392</p>
 <span class="n">phi0</span> <span class="o">=</span> <span class="n">T</span> <span class="o">*</span> <span class="n">h0</span> <span class="c1"># potential along the river, m^3/d</span>
 <span class="n">Qcr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">UL</span> <span class="o">*</span> <span class="n">d</span> <span class="c1"># critical discharge, m^3/d</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">Qcr</span> <span class="si">= :</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m^3/d&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Qcr = 15.71 m^3/d
 </pre></div>
 </div>
 </div>
@@ -726,11 +709,6 @@ ISBN 9781138029392</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fraction of water from river for Q = 2Q_cr: 0.18
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell tag_hide_output docutils container">
 <div class="cell_input docutils container">
@@ -746,9 +724,6 @@ ISBN 9781138029392</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x (m)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/chapter7_bakker_post_24_0.png" src="../_images/chapter7_bakker_post_24_0.png" />
 </div>
 </div>
 </section>
@@ -770,11 +745,6 @@ ISBN 9781138029392</p>
 <span class="n">c</span> <span class="o">=</span> <span class="n">Hstreambed</span> <span class="o">/</span> <span class="n">kstreambed</span> <span class="c1">#  resistance of stream bed, d</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">B</span> <span class="o">/</span> <span class="n">c</span> <span class="c1"># conductance of streambed, m/d</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;leakage factor below stream: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>leakage factor below stream: 32 m
 </pre></div>
 </div>
 </div>
@@ -821,13 +791,6 @@ ISBN 9781138029392</p>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;River bed conductance C = </span><span class="si">{</span><span class="n">C</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m^2/d&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Qcr without bed resistance = </span><span class="si">{</span><span class="n">Qcr1</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m^3/d&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Qcr with bed resistance = </span><span class="si">{</span><span class="n">Qcr2</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m^3/d&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>River bed conductance C = 0.5 m^2/d
-Qcr without bed resistance = 15.71 m^3/d
-Qcr with bed resistance = 25.54 m^3/d
 </pre></div>
 </div>
 </div>
@@ -878,9 +841,6 @@ Qcr with bed resistance = 25.54 m^3/d
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/chapter7_bakker_post_32_0.png" src="../_images/chapter7_bakker_post_32_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -896,22 +856,11 @@ Qcr with bed resistance = 25.54 m^3/d
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>point on the river where Qx equals zero: 57.44 m
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;head at origin: </span><span class="si">{</span><span class="n">omegaresriv</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span><span class="o">.</span><span class="n">real</span> <span class="o">/</span> <span class="n">T</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;head at well: </span><span class="si">{</span><span class="n">omegaresriv</span><span class="p">(</span><span class="o">-</span><span class="n">d</span> <span class="o">+</span> <span class="n">rw</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span><span class="o">.</span><span class="n">real</span> <span class="o">/</span> <span class="n">T</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head at origin: 10.25 m
-head at well: 9.87 m
 </pre></div>
 </div>
 </div>
@@ -930,9 +879,6 @@ head at well: 9.87 m
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/chapter7_bakker_post_35_0.png" src="../_images/chapter7_bakker_post_35_0.png" />
-</div>
 </div>
 </section>
 <section id="a-well-in-uniform-background-flow-near-the-coast">
@@ -950,11 +896,6 @@ head at well: 9.87 m
 <span class="n">Qcr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">U</span> <span class="o">*</span> <span class="n">d</span> <span class="c1"># critical discharge from well near river, m^3/d</span>
 <span class="n">Q</span> <span class="o">=</span> <span class="n">Qcr</span> <span class="o">/</span> <span class="mi">2</span> <span class="c1"># discharge of well, m^3/d</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;dischage of well: </span><span class="si">{</span><span class="n">Q</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m^3/d&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dischage of well: 1570.80 m^3/d
 </pre></div>
 </div>
 </div>
@@ -997,9 +938,6 @@ head at well: 9.87 m
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/chapter7_bakker_post_39_0.png" src="../_images/chapter7_bakker_post_39_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1012,12 +950,6 @@ head at well: 9.87 m
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;maximum discharge: </span><span class="si">{</span><span class="n">Qmax</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m^3/d&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Qmax as fraction of Qcr of Section 7.3: </span><span class="si">{</span><span class="n">Qmax</span> <span class="o">/</span> <span class="n">Qcr</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">om1</span> <span class="o">=</span> <span class="n">omega</span><span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">yg</span><span class="p">,</span> <span class="n">Qmax</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>maximum discharge: 1803.22 m^3/d
-Qmax as fraction of Qcr of Section 7.3: 0.57
 </pre></div>
 </div>
 </div>
@@ -1049,9 +981,6 @@ Qmax as fraction of Qcr of Section 7.3: 0.57
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/chapter7_bakker_post_42_0.png" src="../_images/chapter7_bakker_post_42_0.png" />
 </div>
 </div>
 </section>
