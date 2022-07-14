@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Steady one-dimensional flow with constant transmissivity &#8212; Analytical Groundwater Modeling</title>
-    
+
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
-    
+
   <link rel="stylesheet"
     href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
@@ -27,7 +27,7 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
@@ -44,6 +44,7 @@
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
+    <script> window.onload = initThebeSBT;</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -55,10 +56,10 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Python code of “Analytical Groundwater Modeling”" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
-    
+
 
     <!-- Google Analytics -->
-    
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
 <!-- Checkboxes to toggle the left sidebar -->
@@ -75,36 +76,36 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="announcement header-item noprint"></div>
 <div class="header header-item noprint"></div>
 
-    
+
     <div class="container-fluid" id="banner"></div>
 
-    
+
 
     <div class="container-xl">
       <div class="row">
-          
+
 <!-- Sidebar -->
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
-      
+
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
+
+
+
       <img src="_static/part_of_cover_bakker_post.png" class="logo" alt="logo">
-      
-      
+
+
       <h1 class="site-logo" id="site-title">Analytical Groundwater Modeling</h1>
-      
+
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
+
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="README.html">
@@ -124,41 +125,41 @@ const thebe_selector_output = ".output, .cell_output"
 </nav></div>
         <div class="bd-sidebar__bottom">
              <!-- To handle the deprecated key -->
-            
+
             <div class="navbar_extra_footer">
             Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            
+
         </div>
     </div>
     <div id="rtd-footer-container"></div>
 </div>
 
 
-          
 
 
-          
+
+
 <!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
 <!-- Main content -->
 <div class="col py-0 content-container">
-    
+
     <div class="header-article row sticky-top noprint">
-        
+
 
 
 
 <div class="col py-1 d-flex header-article-main">
     <div class="header-article__left">
-        
+
         <label for="__navigation"
   class="headerbtn"
   data-toggle="tooltip"
 data-placement="right"
 title="Toggle navigation"
 >
-  
+
 
 <span class="headerbtn__icon-container">
   <i class="fas fa-bars"></i>
@@ -166,7 +167,7 @@ title="Toggle navigation"
 
 </label>
 
-        
+
     </div>
     <div class="header-article__right">
 <div class="menu-dropdown menu-dropdown-launch-buttons">
@@ -183,26 +184,26 @@ title="Toggle navigation"
 data-placement="left"
 title="Launch on Binder"
 >
-  
+
 
 <span class="headerbtn__icon-container">
-  
+
     <img src="_static/images/logo_binder.svg">
   </span>
 <span class="headerbtn__text-container">Binder</span>
 </a>
 
       </li>
-      
+
       <li>
-        
+
 <button onclick="initThebeSBT()"
   class="headerbtn headerbtn-launch-thebe"
   data-toggle="tooltip"
 data-placement="left"
 title="Launch Thebe"
 >
-  
+
 
 <span class="headerbtn__icon-container">
   <i class="fas fa-play"></i>
@@ -211,7 +212,7 @@ title="Launch Thebe"
 </button>
 
       </li>
-      
+
     </ul>
   </div>
 </div>
@@ -222,7 +223,7 @@ title="Launch Thebe"
 data-placement="bottom"
 title="Fullscreen mode"
 >
-  
+
 
 <span class="headerbtn__icon-container">
   <i class="fas fa-expand"></i>
@@ -244,7 +245,7 @@ title="Fullscreen mode"
 data-placement="left"
 title="Source repository"
 >
-  
+
 
 <span class="headerbtn__icon-container">
   <i class="fab fa-github"></i>
@@ -253,7 +254,7 @@ title="Source repository"
 </a>
 
       </li>
-      
+
       <li>
         <a href="https://github.com/legrabow/analytic_gw_book_adapted/issues/new?title=Issue%20on%20page%20%2Fchapter1_bakker_post.html&body=Your%20issue%20content%20here."
    class="headerbtn"
@@ -261,7 +262,7 @@ title="Source repository"
 data-placement="left"
 title="Open an issue"
 >
-  
+
 
 <span class="headerbtn__icon-container">
   <i class="fas fa-lightbulb"></i>
@@ -270,7 +271,7 @@ title="Open an issue"
 </a>
 
       </li>
-      
+
     </ul>
   </div>
 </div>
@@ -289,7 +290,7 @@ title="Open an issue"
 data-placement="left"
 title="Download source file"
 >
-  
+
 
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
@@ -298,16 +299,16 @@ title="Download source file"
 </a>
 
       </li>
-      
+
       <li>
-        
+
 <button onclick="printPdf(this)"
   class="headerbtn"
   data-toggle="tooltip"
 data-placement="left"
 title="Print to PDF"
 >
-  
+
 
 <span class="headerbtn__icon-container">
   <i class="fas fa-file-pdf"></i>
@@ -316,15 +317,15 @@ title="Print to PDF"
 </button>
 
       </li>
-      
+
     </ul>
   </div>
 </div>
 <label for="__page-toc"
   class="headerbtn headerbtn-page-toc"
-  
+
 >
-  
+
 
 <span class="headerbtn__icon-container">
   <i class="fas fa-list"></i>
@@ -382,7 +383,7 @@ title="Print to PDF"
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
-                        
+
                         <div>
                             <h2> Contents </h2>
                         </div>
@@ -422,9 +423,9 @@ title="Print to PDF"
                 </div>
             </div>
             <main id="main-content" role="main">
-                
+
               <div>
-                
+
   <p><img alt="cover_bakker" src="_images/part_of_cover_bakker_post.png" /></p>
 <p>The Python code provided below is from <br>
 <strong>Analytical Groundwater Modeling: Theory and Applications Using Python</strong> <br>
@@ -473,11 +474,11 @@ ISBN 9781138029392</p>
 <span class="sd">    k -- hydraulic conductivity, m/d</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">T</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">H</span> <span class="c1"># transmissivity, m^2/d</span>
-    
+
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
     <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
     <span class="n">Qx</span> <span class="o">=</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    
+
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
@@ -602,7 +603,7 @@ travel time from left river to right river: 15000 days
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="n">N</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">L</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> 
+<span class="n">Qx</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span>
 </pre></div>
 </div>
 </div>
@@ -669,7 +670,7 @@ discharge into right river: 0.700 m^2/d
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> 
+<span class="n">Qx</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span>
 <span class="n">psi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
 <span class="n">psi</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">Qx</span> <span class="c1"># at the top of the aquifer, the stream function is -Qx</span>
 <span class="n">xg</span> <span class="o">=</span> <span class="n">x</span>
@@ -820,7 +821,7 @@ discharge into right river: 0.700 m^2/d
 <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">h</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">L0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">T0</span> <span class="o">*</span> <span class="n">L1</span> <span class="o">+</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">L0</span><span class="p">]</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
 <span class="n">h</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">L0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T0</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">T0</span> <span class="o">*</span> <span class="n">L1</span> <span class="o">+</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">L0</span><span class="p">]</span> <span class="o">-</span> <span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">hL</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="o">-</span><span class="n">T0</span> <span class="o">*</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">T0</span> <span class="o">*</span> <span class="n">L1</span> <span class="o">+</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> 
+<span class="n">Qx</span> <span class="o">=</span> <span class="o">-</span><span class="n">T0</span> <span class="o">*</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">T0</span> <span class="o">*</span> <span class="n">L1</span> <span class="o">+</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span>
 <span class="n">hhalfway</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;head halfway: </span><span class="si">{</span><span class="n">hhalfway</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;head gradient zone 0: </span><span class="si">{</span><span class="p">(</span><span class="n">hhalfway</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L0</span><span class="si">:</span><span class="s1"> .6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -899,10 +900,10 @@ effective transmissivity:  36.4 m^2/d
     <script>kernelName = 'python3'</script>
 
               </div>
-              
+
             </main>
             <footer class="footer-article noprint">
-                
+
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="README.html" title="previous page">
@@ -918,20 +919,20 @@ effective transmissivity:  36.4 m^2/d
     </div>
     <div class="footer-content row">
         <footer class="col footer"><p>
-  
+
     By Mark Bakker and Vincent Post<br/>
-  
+
       &copy; Copyright 2022.<br/>
 </p>
         </footer>
     </div>
-    
+
 </div>
 
 
       </div>
     </div>
-  
+
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
