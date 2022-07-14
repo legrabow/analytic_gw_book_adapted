@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Steady one-dimensional flow with constant transmissivity &#8212; Analytical Groundwater Modeling</title>
+    <title>Test &#8212; Analytical Groundwater Modeling</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -120,7 +120,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Steady one-dimensional flow with constant transmissivity
+   Test
   </a>
  </li>
 </ul>
@@ -325,118 +325,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Steady one-dimensional flow with constant transmissivity
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flow-between-two-rivers">
-     Flow between two rivers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-test">
-   Section Test
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#areal-recharge-between-two-rivers">
-     Areal recharge between two rivers
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#areal-recharge-between-an-impermeable-boundary-and-a-river">
-     Areal recharge between an impermeable boundary and a river
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flow-through-two-zones-of-different-transmissivities">
-     Flow through two zones of different transmissivities
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Steady one-dimensional flow with constant transmissivity</h1>
+                <h1>Test</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Steady one-dimensional flow with constant transmissivity
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flow-between-two-rivers">
-     Flow between two rivers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-test">
-   Section Test
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#areal-recharge-between-two-rivers">
-     Areal recharge between two rivers
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#areal-recharge-between-an-impermeable-boundary-and-a-river">
-     Areal recharge between an impermeable boundary and a river
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flow-through-two-zones-of-different-transmissivities">
-     Flow through two zones of different transmissivities
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -444,388 +349,32 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><img alt="cover_bakker" src="_images/part_of_cover_bakker_post.png" /></p>
-<p>The Python code provided below is from <br>
-<strong>Analytical Groundwater Modeling: Theory and Applications Using Python</strong> <br>
-by <em>Mark Bakker and Vincent Post</em> <br>
-ISBN 9781138029392</p>
-<p>The book is published by CRC press and is available <a class="reference external" href="https://www.routledge.com/Analytical-Groundwater-Modeling-Theory-and-Applications-using-Python/Bakker-Post/p/book/9781138029392">here</a>.</p>
-<p>This Notebook is provided under the <a class="reference external" href="https://github.com/pythongroundwaterbook/analytic_gw_book/blob/main/LICENSE">MIT license</a>.</p>
-<p>© 2022 Mark Bakker and Vincent Post</p><section id="steady-one-dimensional-flow-with-constant-transmissivity">
-<h1>Steady one-dimensional flow with constant transmissivity<a class="headerlink" href="#steady-one-dimensional-flow-with-constant-transmissivity" title="Permalink to this headline">#</a></h1>
-<div class="cell tag_remove-input tag_thebe-init docutils container">
-</div>
-<section id="flow-between-two-rivers">
-<h2>Flow between two rivers<a class="headerlink" href="#flow-between-two-rivers" title="Permalink to this headline">#</a></h2>
-<p><img alt="fig1.1" src="_images/fig1.1.png" /></p>
-<div class="cell tag_remove-input docutils container">
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="test">
+<h1>Test<a class="headerlink" href="#test" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#interact(plot_subplots,</span>
-<span class="c1">#         h0 = widgets.FloatSlider(value=6, min=4, max=8, step=0.1, description=r&#39;$h_0, m$:&#39;, disabled=False),</span>
-<span class="c1">#         hL=widgets.FloatSlider(value=4, min=4, max=8, step=0.1, description=r&#39;$h_L, m$:&#39;, disabled=False),</span>
-<span class="c1">#         k=widgets.FloatText(value=10, min=0.1, max=100, step=0.1, description=r&#39;$K, \frac{m}{d}$:&#39;, disabled=False))</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="section-test">
-<h1>Section Test<a class="headerlink" href="#section-test" title="Permalink to this headline">#</a></h1>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello 1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello 1
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="n">xg</span><span class="p">,</span> <span class="n">zg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">zb</span><span class="p">,</span> <span class="n">zb</span> <span class="o">+</span> <span class="n">H</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">qx</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">xg</span><span class="p">)</span>
-<span class="n">qz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">xg</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide_output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic stream plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">zg</span><span class="p">,</span> <span class="n">qx</span><span class="p">,</span> <span class="n">qz</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$z$ (m)&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello 2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/test_11_0.png" src="_images/test_11_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># travel time</span>
-<span class="n">vx</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mean velocity: </span><span class="si">{</span><span class="n">vx</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> m/d&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;travel time from left river to right river: </span><span class="si">{</span><span class="n">L</span> <span class="o">/</span> <span class="n">vx</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> days&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean velocity: 0.0667 m/d
-travel time from left river to right river: 15000 days
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello 2
 </pre></div>
 </div>
 </div>
 </div>
-<section id="areal-recharge-between-two-rivers">
-<h2>Areal recharge between two rivers<a class="headerlink" href="#areal-recharge-between-two-rivers" title="Permalink to this headline">#</a></h2>
-<p><img alt="fig1.2" src="_images/fig1.2.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
-<span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># aquifer length, m</span>
-<span class="n">H</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># saturated thickness, m</span>
-<span class="n">zb</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="c1"># aquifer bottom, m</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># hydraulic conductivity, m/d</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="c1"># porosity, -</span>
-<span class="n">T</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">H</span> <span class="c1"># transmissivity, m^2/d</span>
-<span class="n">h0</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># specified head at the left boundary, m</span>
-<span class="n">hL</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># specified head at the right boundary, m</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># areal recharge, m/d</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="n">N</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">L</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide_output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;head (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Qx</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Q_x$ (m$^2$/d)&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/test_17_0.png" src="_images/test_17_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;discharge into left river: </span><span class="si">{</span><span class="o">-</span><span class="n">Qx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> m^2/d&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;discharge into right river: </span><span class="si">{</span><span class="n">Qx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> m^2/d&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>discharge into left river: 0.300 m^2/d
-discharge into right river: 0.700 m^2/d
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="n">xg</span><span class="p">,</span> <span class="n">zg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">zb</span><span class="p">,</span> <span class="n">zb</span> <span class="o">+</span> <span class="n">H</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">qx</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">xg</span> <span class="o">-</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="n">H</span>
-<span class="n">qz</span> <span class="o">=</span> <span class="o">-</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">zg</span> <span class="o">-</span> <span class="n">zb</span><span class="p">)</span> <span class="o">/</span> <span class="n">H</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide_output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic stream plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">zg</span><span class="p">,</span> <span class="n">qx</span><span class="p">,</span> <span class="n">qz</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$z$ (m)&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/test_20_0.png" src="_images/test_20_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> 
-<span class="n">psi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-<span class="n">psi</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">Qx</span> <span class="c1"># at the top of the aquifer, the stream function is -Qx</span>
-<span class="n">xg</span> <span class="o">=</span> <span class="n">x</span>
-<span class="n">zg</span> <span class="o">=</span> <span class="p">[</span><span class="n">zb</span><span class="p">,</span> <span class="n">zb</span> <span class="o">+</span> <span class="n">H</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide_output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic streamline plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="n">cs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">zg</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.2f</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$z$ (m)&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/test_22_0.png" src="_images/test_22_0.png" />
-</div>
-</div>
-<div class="cell tag_hide_output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic streamline plot of part of flow field without vertical exaggeration</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
-<span class="n">cs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">zg</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/test_23_0.png" src="_images/test_23_0.png" />
-</div>
-</div>
-</section>
-<section id="areal-recharge-between-an-impermeable-boundary-and-a-river">
-<h2>Areal recharge between an impermeable boundary and a river<a class="headerlink" href="#areal-recharge-between-an-impermeable-boundary-and-a-river" title="Permalink to this headline">#</a></h2>
-<p><img alt="fig1.3" src="_images/fig1.3.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
-<span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># aquifer length, m</span>
-<span class="n">H</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># aquifer thickness, m</span>
-<span class="n">zb</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="c1"># aquifer bottom, m</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># hydraulic conductivity, m/d</span>
-<span class="n">T</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">H</span> <span class="c1"># transmissivity, m^2/d</span>
-<span class="n">hL</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># specified head at the right boundary, m</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># areal recharge, m/d</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="n">N</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">L</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">hL</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide_output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;head (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Qx</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Q_x$ (m$^2$/d)&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/test_28_0.png" src="_images/test_28_0.png" />
-</div>
-</div>
-<p><img alt="fig1.4" src="_images/fig1.4.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># additional parameters</span>
-<span class="n">hR</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># water level in river, m</span>
-<span class="n">c</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># hydraulic resistance of river bed, d</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">C</span> <span class="o">=</span> <span class="n">H</span> <span class="o">/</span> <span class="n">c</span>
-<span class="n">hL</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="n">C</span> <span class="o">+</span> <span class="n">hR</span>
-<span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="n">N</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">L</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">hL</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide_output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;head (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Qx</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Q_x$ (m$^2$/d)&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/test_32_0.png" src="_images/test_32_0.png" />
-</div>
-</div>
-</section>
-<section id="flow-through-two-zones-of-different-transmissivities">
-<h2>Flow through two zones of different transmissivities<a class="headerlink" href="#flow-through-two-zones-of-different-transmissivities" title="Permalink to this headline">#</a></h2>
-<p><img alt="fig1.5" src="_images/fig1.5.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
-<span class="n">h0</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># specified head at the left boundary, m</span>
-<span class="n">hL</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># specified head at the right boundary, m</span>
-<span class="n">L0</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># length of zone 0, m</span>
-<span class="n">L1</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># length of zone 1, m</span>
-<span class="n">T0</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># transmissivity of zone 0, m^2/d</span>
-<span class="n">T1</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># transmissivity of zone 1, m^2/d</span>
-<span class="n">L</span> <span class="o">=</span> <span class="n">L0</span> <span class="o">+</span> <span class="n">L1</span> <span class="c1"># total length, m</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">h</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">L0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">T0</span> <span class="o">*</span> <span class="n">L1</span> <span class="o">+</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">L0</span><span class="p">]</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
-<span class="n">h</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">L0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T0</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">T0</span> <span class="o">*</span> <span class="n">L1</span> <span class="o">+</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">L0</span><span class="p">]</span> <span class="o">-</span> <span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">hL</span>
-<span class="n">Qx</span> <span class="o">=</span> <span class="o">-</span><span class="n">T0</span> <span class="o">*</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">T0</span> <span class="o">*</span> <span class="n">L1</span> <span class="o">+</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">L0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> 
-<span class="n">hhalfway</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;head halfway: </span><span class="si">{</span><span class="n">hhalfway</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;head gradient zone 0: </span><span class="si">{</span><span class="p">(</span><span class="n">hhalfway</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L0</span><span class="si">:</span><span class="s1"> .6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;head gradient zone 1: </span><span class="si">{</span><span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">hhalfway</span><span class="p">)</span> <span class="o">/</span> <span class="n">L1</span><span class="si">:</span><span class="s1"> .6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head halfway: 5.82 m
-head gradient zone 0: -0.000364
-head gradient zone 1: -0.003636
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;head (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">],</span> <span class="p">[</span><span class="n">Qx</span><span class="p">,</span> <span class="n">Qx</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Q_x$ (m$^2$/d)&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/test_37_0.png" src="_images/test_37_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;arithmetic mean transmissivity: </span><span class="si">{</span><span class="p">(</span><span class="n">T0</span> <span class="o">+</span> <span class="n">T1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="si">:</span><span class="s1"> .1f</span><span class="si">}</span><span class="s1"> m^2/d&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;effective transmissivity: </span><span class="si">{</span><span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">L1</span> <span class="o">/</span> <span class="n">T1</span> <span class="o">+</span> <span class="n">L0</span> <span class="o">/</span> <span class="n">T0</span><span class="p">)</span><span class="si">:</span><span class="s1"> .1f</span><span class="si">}</span><span class="s1"> m^2/d&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arithmetic mean transmissivity:  110.0 m^2/d
-effective transmissivity:  36.4 m^2/d
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
