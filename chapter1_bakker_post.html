@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Steady one-dimensional flow with constant transmissivity" href="test.html" />
+    <link rel="next" title="Test" href="test.html" />
     <link rel="prev" title="Python code of “Analytical Groundwater Modeling”" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="test.html">
-   Steady one-dimensional flow with constant transmissivity
+   Test
   </a>
  </li>
 </ul>
@@ -454,12 +454,66 @@ ISBN 9781138029392</p>
 <p>This Notebook is provided under the <a class="reference external" href="https://github.com/pythongroundwaterbook/analytic_gw_book/blob/main/LICENSE">MIT license</a>.</p>
 <p>© 2022 Mark Bakker and Vincent Post</p><section id="steady-one-dimensional-flow-with-constant-transmissivity">
 <h1>Steady one-dimensional flow with constant transmissivity<a class="headerlink" href="#steady-one-dimensional-flow-with-constant-transmissivity" title="Permalink to this headline">#</a></h1>
-<div class="cell tag_remove-input tag_thebe-init docutils container">
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># set default figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;contour.negative_linestyle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span> <span class="c1"># set default line style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.autolayout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># same as tight_layout after every plot</span>
+</pre></div>
+</div>
+</div>
 </div>
 <section id="flow-between-two-rivers">
 <h2>Flow between two rivers<a class="headerlink" href="#flow-between-two-rivers" title="Permalink to this headline">#</a></h2>
 <p><img alt="fig1.1" src="_images/fig1.1.png" /></p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># aquifer length, m</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># aquifer thickness, m</span>
+<span class="n">zb</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span> <span class="c1"># aquifer bottom, m</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="c1"># porosity, -</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># hydraulic conductivity, m/d</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">H</span> <span class="c1"># transmissivity, m^2/d</span>
+<span class="n">h0</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># specified head at the left boundary, m</span>
+<span class="n">hL</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># specified head at the right boundary, m</span>
+
+<span class="c1"># basic plot</span>
+<span class="k">def</span> <span class="nf">plot_subplots</span><span class="p">(</span><span class="n">h0</span><span class="p">,</span> <span class="n">hL</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot the hydraulic head in one subplot and q in the other</span>
+<span class="sd">    </span>
+<span class="sd">    Keyword Arguments</span>
+<span class="sd">    h0 -- hydraulic head to the left, m</span>
+<span class="sd">    hL -- hydraulic head to the right, m</span>
+<span class="sd">    k -- hydraulic conductivity, m/d</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">H</span> <span class="c1"># transmissivity, m^2/d</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span> <span class="o">+</span> <span class="n">h0</span>
+    <span class="n">Qx</span> <span class="o">=</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">hL</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;head (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Qx</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Q_x$ (m$^2$/d)&#39;</span><span class="p">);</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -475,7 +529,12 @@ ISBN 9781138029392</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="section-test">
 <h1>Section Test<a class="headerlink" href="#section-test" title="Permalink to this headline">#</a></h1>
-<div class="cell tag_remove-input docutils container">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello
 </pre></div>
@@ -866,7 +925,7 @@ effective transmissivity:  36.4 m^2/d
     <a class='right-next' id="next-link" href="test.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Steady one-dimensional flow with constant transmissivity</p>
+        <p class="prev-next-title">Test</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
